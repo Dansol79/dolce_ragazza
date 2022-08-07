@@ -28,6 +28,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Definir un dominio para permitir el acceso a nuestra API
 const whiteList = [process.env.FRONTEND_URL]; 
+
 const corsOptions = {
     origin: (origin, callback) => {
        
