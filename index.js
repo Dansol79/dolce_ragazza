@@ -53,7 +53,7 @@ app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Access-Control-Allow-Credentials', true);
     // handle OPTIONS method
-    if ('OPTIONS' == req.method) {
+    if ('corsOptions' == req.method) {
         return res.sendStatus(200);
     } else {
         next();
@@ -71,5 +71,5 @@ const port= process.env.PORT || 5000;
 
 // Iniciar app
 app.listen(port, host, () => {
-    console.log(`Servidor corriendo en el puerto ${port}`);
+    console.log('Servidor corriendo' );
 });
