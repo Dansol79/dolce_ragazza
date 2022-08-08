@@ -28,10 +28,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Definir un dominio para permitir el acceso a nuestra API
-const whiteList = process.env.FRONTEND_URL; 
+const whiteList = [process.env.FRONTEND_URL]; 
 
-const corsOptions = {
+const Options = {
     origin: (origin, callback) => {
+        console.log(origin); 
        
         // Revisar si la peticion llega de un servidor en whiteList
         const existe = whiteList.some(dominio => dominio === origin);
@@ -46,7 +47,7 @@ const corsOptions = {
 
 
 //HBILITAR CORS
-app.use(cors(corsOptions));
+app.use(cors(Options));
 
 // RUTAS de la app
 
