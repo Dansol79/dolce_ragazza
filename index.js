@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Definir un dominio para permitir el acceso a nuestra API
-const whiteList = [process.env.FRONTEND_URL]; 
+const whiteList = process.env.FRONTEND_URL; 
 
 const corsOptions = {
     origin: (origin, callback) => {
@@ -47,18 +47,6 @@ const corsOptions = {
 
 //HBILITAR CORS
 app.use(cors(corsOptions));
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    // handle OPTIONS method
-    if ('corsOptions' == req.method) {
-        return res.sendStatus(200);
-    } else {
-        next();
-    }
-});
 
 // RUTAS de la app
 
