@@ -47,7 +47,7 @@ const Options = {
 
 
 //HBILITAR CORS
-app.use(cors(Options));
+app.use(cors({origin:'*'}));
 
 // RUTAS de la app
 
