@@ -32,18 +32,12 @@ const whiteList = [process.env.FRONTEND_URL];
 
 
 const corsOptions = {
-    origin: (origin, callback) => {
-        console.log(origin); 
-       
-        // Revisar si la peticion llega de un servidor en whiteList
-        const existe = whiteList.some(dominio => dominio === origin);
-        if(existe){
-            callback(null, true);
-        }else{
-            callback(new Error('No permitido por CORS'));
-        }
-
-    }
+    origin:'*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+    exposedHeaders: ['x-auth-token']
+    
 }
 
 
