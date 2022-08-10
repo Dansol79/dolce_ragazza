@@ -33,7 +33,7 @@ exports.autenticarUsuario = async (req, res, next) => {
         //Si el usuario existe, verificar la contraseña
         if(!bcrypt.compareSync(password, usuario.password)) {
             //Si la contraseña no es correcta
-            await res.status(401).json({ mensaje: 'La contraseña no es correcta' });
+            await res.status(401).json({ mensaje: 'La contraseña es incorrecta' });
             next();
         }else {
             //Si todo es correcto, crear y firmar el JWT
