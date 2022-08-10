@@ -30,14 +30,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Definir un dominio para permitir el acceso a nuestra API
 const whiteList = [process.env.FRONTEND_URL]; 
 
-
 const corsOptions = {
-    origin:'*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-    exposedHeaders: ['x-auth-token']
-    
+    origin: (origin, callback) => {
+        console.log(origin);
+        const existe = whiteList.some( dominio => dominio === origin);
+        if (existe) {
+            callback(null, true);
+        }else{
+            callback(new Error('No permitido por CORS'));
+        }
+    }
 }
 
 
